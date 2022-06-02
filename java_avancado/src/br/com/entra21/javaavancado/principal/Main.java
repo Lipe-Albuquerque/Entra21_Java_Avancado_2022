@@ -3,6 +3,7 @@ package br.com.entra21.javaavancado.principal;
 import java.util.Scanner;
 
 import br.com.entra21.javaavancado.principal.aula01.enums.PersonagemJogo;
+import br.com.entra21.javaavancado.principal.aula02.collections.list.LearningCollections;
 
 public class Main {
 	static Scanner input = new Scanner(System.in);
@@ -29,6 +30,9 @@ public class Main {
 			case 2:
 				aprenderENUM();
 				break;
+			case 3:
+				LearningCollections.learning();
+				break;
 			default:
 				System.out.println("ERROR!! SELECIONE ALGO VALIDO");
 				break;
@@ -44,7 +48,9 @@ public class Main {
 		menu += "\n 0 - SAIR";
 		menu += "\n 1 - WRAPPER";
 		menu += "\n 2 - ENUM";
+		menu += "\n 3 - Collection-LIST";
 		menu += "\n ESCOLA UMA DAS OPÇÕES";
+		
 
 		return menu;
 	}
@@ -79,6 +85,9 @@ public class Main {
         System.out.println("Gosto desse tipo de personagem: " + PersonagemJogo.ANAO);
         System.out.println("Geralmente a classe " + PersonagemJogo.ANAO + " tem HP = " + PersonagemJogo.ANAO.getHP());
         System.out.println("Veja a caracterisca mais comum dele " + PersonagemJogo.ANAO.getDESCRIPTION());
+        
+        
+        
       
 	}
 }
