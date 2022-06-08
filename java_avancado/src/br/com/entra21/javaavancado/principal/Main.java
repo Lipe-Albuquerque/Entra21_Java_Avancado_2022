@@ -4,90 +4,96 @@ import java.util.Scanner;
 
 import br.com.entra21.javaavancado.principal.aula01.enums.PersonagemJogo;
 import br.com.entra21.javaavancado.principal.aula02.collections.list.LearningCollections;
+import br.com.entra21.javaavancado.principal.aula03.Aula03;
 
 public class Main {
-	static Scanner input = new Scanner(System.in);
 
-	public enum DiasSemana {
-		SEGUNDA, TERCA, QUARTA, QUINTA, SEXTA, SABADO, DOMINGO
-	}
+	static Scanner entrada = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		byte option;
+
+		byte opcao;
 		do {
+			System.out.println(montarMenu());
+			opcao = entrada.nextByte();
 
-			System.out.println(exibirMenu());
-			option = input.nextByte();
-
-			switch (option) {
+			switch (opcao) {
 			case 0:
-				System.out.println("Obrigado por usar nosso programado, ate logo!");
-
+				System.out.println("Até a proxima!");
 				break;
 			case 1:
-				aprenderWrapper();
+				Aula01.aprender();
 				break;
 			case 2:
-				aprenderENUM();
+				Aula02.aprender();
 				break;
 			case 3:
-				LearningCollections.learning();
+				Aula03.aprender();
 				break;
+			case 4:
+				String titulo = "Aula04 - Collections - SET - HashSet";
+
+				ArrayList<String> assuntos = new ArrayList<>();
+				assuntos.add("Definir");
+				assuntos.add("CRUD");
+
+				Aula04 aula04 = new Aula04(titulo, assuntos);
+				aula04.aprender();
+				break;
+			case 5:
+				new Aula05("Aula05 - Collections - MAP - HashMap",
+						new ArrayList<>(Arrays.asList("Definir", "Create", "Read", "Update", "Delete","Exemplo prático"))).aprender();
+
+				break;
+			case 6:
+				pedirPaciencia();
+				break;
+			case 7:
+				pedirPaciencia();
+				break;
+			case 8:
+				pedirPaciencia();
+				break;
+			case 9:
+				pedirPaciencia();
+				break;
+			case 10:
+				pedirPaciencia();
+				break;
+
 			default:
-				System.out.println("ERROR!! SELECIONE ALGO VALIDO");
+				System.out.println("Escolha uma opção válida para aprender um assunto avançado sobre JAVA");
 				break;
 			}
 
-		} while (option != 0);
+		} while (opcao != 0);
+		System.out.println("Obrigado, volse sempre que quiser aprender mais sobre JAVA AVANÇADO");
 
 	}
 
-	private static String exibirMenu() {
-
-		String menu = "Vamos aprender sobre conceitos avançados em JAVA!";
-		menu += "\n 0 - SAIR";
-		menu += "\n 1 - WRAPPER";
-		menu += "\n 2 - ENUM";
-		menu += "\n 3 - Collection-LIST";
-		menu += "\n ESCOLA UMA DAS OPÇÕES";
+	private static String montarMenu() {
+		String menu = "Módulo sobre JAVA AVANÇADO:";
+		menu += "\n  0 - Sair";
+		menu += "\n  1 - Aula 01  ENUM e Classes Wrapper";
+		menu += "\n  2 - Aula 02 - Collections - LIST";
+		menu += "\n  3 - Aula 03 - Annotations e Datas";
+		menu += "\n  4 - Aula 04 - Collections - SET";
+		menu += "\n  5 - Aula 05 - Collections - MAP";
+		menu += "\n  6 - Aula 06 - Generics";
+		menu += "\n  7 - Aula 07 - Exceções e tratamento de erros";
+		menu += "\n  8 - Aula 08 - Funções Lambda";
+		menu += "\n--------------------------------------------------------";
+		menu += "\n Escolha uma opção para aprender:";
+		menu += "\n--------------------------------------------------------";
 		
-
 		return menu;
 	}
 
-	private static void aprenderWrapper() {
-
-		char letra = Character.valueOf('C');
-		boolean verdade = Boolean.parseBoolean("True");
-		boolean verdade1 = Boolean.parseBoolean("tRue");
-		boolean verdade2 = Boolean.parseBoolean("true");
-		boolean falso = Boolean.parseBoolean("t");
-
-		byte inteiroUm = Byte.parseByte("127");
-		short inteiroDois = Short.parseShort("128");
-		int inteiroTres = Integer.parseInt("10000");
-		long inteiroQuatro = Long.parseLong("100000");
-
-		float decimalUm = Float.parseFloat("1000.10");
-		double decimalDois = Double.parseDouble("2000.20 ");
+	@Responsavel(ordemPrioridade = Responsavel.OrdemPrioridade.DOCUMENTAR, item = "Mostrar que não ta na hora", quemAssume = "Rubem Oliota")
+	private static void pedirPaciencia() {
+		System.out.println("CALMA CALMA CALMA, muita CALMA... ainda não esta pronto.");
+		System.out.println("--------------------------------------------------------");
 
 	}
 
-	private static void aprenderENUM() {
-		System.out.println("Testando Enum: " + DiasSemana.TERCA);
-        boolean hoje = DiasSemana.DOMINGO == DiasSemana.SEGUNDA;
-        System.out.println(hoje ? "sim" : "não");
- 
-        for (int dia = 0; dia < DiasSemana.values().length; dia++) {
-            System.out.println((dia + 1) + " - " + DiasSemana.values()[dia]);
-        }
- 
-        System.out.println("Gosto desse tipo de personagem: " + PersonagemJogo.ANAO);
-        System.out.println("Geralmente a classe " + PersonagemJogo.ANAO + " tem HP = " + PersonagemJogo.ANAO.getHP());
-        System.out.println("Veja a caracterisca mais comum dele " + PersonagemJogo.ANAO.getDESCRIPTION());
-        
-        
-        
-      
-	}
 }
